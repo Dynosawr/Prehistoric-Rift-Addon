@@ -1,0 +1,71 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.indominus_rex.idle": {
+			"loop": true,
+			"animation_length": 2.08,
+			"bones": {
+				"leftArm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.04": [7.5, 0, 0],
+						"2.08": [0, 0, 0]
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.04": [7.5, 0, 0],
+						"2.08": [0, 0, 0]
+					}
+				},
+				"tail": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"1.04": [-10, 0, 0],
+						"2.08": [0, 0, 0]
+					}
+				},
+				"head": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"1.04": [0, -2, 0],
+						"2.08": [0, 0, 0]
+					}
+				}
+			}
+		},
+		"animation.indominus_rex.walk": {
+			"loop": true,
+			"anim_time_update": "query.modified_distance_moved",
+			"bones": {
+				"leftLeg": {
+					"rotation": ["query.anim_time * -30", 0, 0]
+				},
+				"rightLeg": {
+					"rotation": ["query.anim_time * 30", 0, 0]
+				}
+			}
+		},
+		"animation.indominus_rex.look": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": ["math.clamp(query.target_x_rotation, -7.5, 7.5)", "math.clamp(query.target_y_rotation, -25, 25)", 0]
+				}
+			}
+		},
+		"animation.indominus_rex.attack": {
+			"animation_length": 0.52,
+			"bones": {
+				"lowerJaw": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.28": [0, -45, 0],
+						"0.52": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

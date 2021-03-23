@@ -1,0 +1,14 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.indominus_rex_break_blocks": {
+			"animation_length": 0.05,
+			"loop": true,
+			"timeline": {
+				"0": [
+					"/fill ~-5 ~ ~-5 ~+5 ~+10 ~+5 air 0 destroy"
+				]
+			}
+        }
+	}
+}

@@ -1,0 +1,106 @@
+{
+    "format_version": "1.16.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "rift:indominus_rex",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false,
+            "animations": {
+                "contBreakBlocks": "controller.animation.indominus_rex_break_blocks",
+                "animBreakBlocks": "animation.indominus_rex_break_blocks"
+            },
+            "scripts": {
+                "animate": [
+                    "contBreakBlocks"
+                ]
+            }
+        },
+        "components": {
+            "minecraft:health": {
+                "value": 69420666
+            },
+            "minecraft:attack": {
+                "damage": 69420666
+            },
+            "minecraft:behavior.delayed_attack": {
+                "priority": 0,
+                "attack_duration": 0.52,
+                "hit_delay_pct": 1,
+                "track_target": true,
+                "reach_multiplier": 3
+            },
+            "minecraft:breathable": {
+				"total_supply": 15,
+				"suffocate_time": 0,
+                "breathes_water": true,
+                "breathes_solids": true,
+                "breathes_air": true
+			},
+            "minecraft:collision_box": {
+                "width": 1.5,
+                "height": 2.75
+            },
+            "minecraft:scale": {
+                "value": 3
+            },
+            "minecraft:movement": {
+                "value": 0.75
+            },
+            "minecraft:type_family": {
+                "family": [
+                    "indominusRex",
+                    "mob"
+                ]
+            },
+            "minecraft:physics": {},
+            "minecraft:pushable": {},
+			"minecraft:navigation.walk": {
+				"avoid_water": true,
+				"avoid_damage_blocks": true
+			},
+			"minecraft:movement.basic": {},
+            "minecraft:behavior.float": {},
+            "minecraft:jump.static": {},
+            "minecraft:behavior.random_stroll": {
+                "priority": 3
+            },
+            "minecraft:behavior.hurt_by_target": {
+				"priority": 3
+			},
+            "minecraft:behavior.nearest_attackable_target": {
+                "priority": 1,
+                "within_radius": 64,
+                "reselect_targets": true,
+                "entity_types": [
+                    {
+                        "filters": {
+                            "test": "is_family",
+                            "subject": "other",
+                            "operator": "!=",
+                            "value": "indominusRex"
+                        },
+                        "max_dist": 64
+                    }
+                ]
+            },
+            "minecraft:is_hidden_when_invisible": {},
+            "minecraft:nameable": {},
+            "minecraft:experience_reward": {
+                "on_death": "query.last_hit_by_player ? Math.Random(16,24) : 0"
+            },
+            "minecraft:despawn": {
+                "despawn_from_distance": {}
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "run_command": {
+                    "command": [
+                        "playsound mob.april_fools.lol @a[r=16]"
+                    ]
+                }
+            }
+        }
+    }
+}

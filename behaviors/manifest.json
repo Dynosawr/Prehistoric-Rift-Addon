@@ -2,8 +2,8 @@
 	"format_version": 2,
 	"header": {
 		"description": "An addon that focuses on adding prehistoric creatures and enhancing the game",
-		"name": "Prehistoric Rift - Behaviors",
-		"uuid": "6dbcd7fc-f8a1-4ac4-8719-ae5dce401354",
+		"name": "Prehistoric Rift April Fools - Behaviors",
+		"uuid": "eef48158-b2c0-4b53-85ae-361a8bc6371a",
 		"version": [
 			0,
 			5,
@@ -19,7 +19,7 @@
 		{
 			"description": "prehistoric rift behavior pack",
 			"type": "data",
-			"uuid": "37cff4f6-7fb9-4814-aca3-f1303ef433f1",
+			"uuid": "431efe50-0144-4ea2-a272-fabd10c57ad7",
 			"version": [
 				0,
 				5,
@@ -29,7 +29,7 @@
 	],
 	"dependencies": [
 		{
-			"uuid": "a0dfde7c-62c0-4feb-b024-20812994b6fb",
+			"uuid": "5be393aa-a704-4410-9394-f987c1cd1e6d",
 			"version": [
 				0,
 				5,
@@ -42,6 +42,6 @@
 			"ANightDazingZoroark"
 		],
 		"license": "MIT",
-		"url": "https://discord.gg/bP6sAky"
+		"url": "https://discord.gg/qVWaKRMCRc"
 	}
 }

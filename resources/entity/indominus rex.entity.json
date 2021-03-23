@@ -1,0 +1,39 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "rift:indominus_rex",
+			"materials": {
+				"default": "skeleton"
+			},
+			"textures": {
+				"default": "textures/indominus_rex"
+			},
+            "animations": {
+				"animIdle": "animation.indominus_rex.idle",
+                "animWalk": "animation.indominus_rex.walk",
+                "animLook": "animation.indominus_rex.look",
+                "animAttack": "animation.indominus_rex.attack",
+				"contMove": "controller.animation.indominus_rex_movement",
+				"contAttack": "controller.animation.indominus_rex_attack"
+			},
+			"scripts": {
+				"animate": [
+					"animLook",
+					"contMove",
+					"contAttack"
+				]
+			},
+			"geometry": {
+				"default": "geometry.indominus_rex"
+			},
+			"render_controllers": [
+				"controller.render.common"
+			],
+			"spawn_egg": {
+				"base_color": "#ffffff",
+				"overlay_color": "#e6e6e6"
+			}
+		}
+	}
+}

@@ -2,8 +2,8 @@
 	"format_version": 2,
 	"header": {
 		"description": "An addon that focuses on adding prehistoric creatures and enhancing the game",
-		"name": "Prehistoric Rift - Resources",
-		"uuid": "a0dfde7c-62c0-4feb-b024-20812994b6fb",
+		"name": "Prehistoric Rift April Fools - Resources",
+		"uuid": "5be393aa-a704-4410-9394-f987c1cd1e6d",
 		"version": [
 			0,
 			5,
@@ -19,7 +19,7 @@
 		{
 			"description": "prehistoric rift resource pack",
 			"type": "resources",
-			"uuid": "1e21f2f5-2b4e-461f-be77-14a70e755909",
+			"uuid": "4756db12-04f5-4b2b-940e-396b253a1aa8",
 			"version": [
 				0,
 				5,
@@ -29,7 +29,7 @@
 	],
 	"dependencies": [
 		{
-			"uuid": "6dbcd7fc-f8a1-4ac4-8719-ae5dce401354",
+			"uuid": "eef48158-b2c0-4b53-85ae-361a8bc6371a",
 			"version": [
 				0,
 				5,
@@ -42,6 +42,6 @@
 			"ANightDazingZoroark"
 		],
 		"license": "MIT",
-		"url": "https://discord.gg/bP6sAky"
+		"url": "https://discord.gg/qVWaKRMCRc"
 	}
 }

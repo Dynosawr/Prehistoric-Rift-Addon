@@ -1,0 +1,27 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.indominus_rex_break_blocks": {
+            "initial_state": "default",
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "break_blocks": "query.is_moving"
+                        }
+                    ]
+                },
+                "break_blocks": {
+                    "transitions": [
+                        {
+                            "default": "!query.is_moving"
+                        }
+                    ],
+                    "animations": [
+                        "animBreakBlocks"
+                    ]
+                }
+            }
+        }
+    }
+}
