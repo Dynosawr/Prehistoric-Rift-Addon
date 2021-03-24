@@ -1,0 +1,42 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:spawn_rules": {
+		"description": {
+			"identifier": "rift:indominus_rex",
+			"population_control": "animal"
+		},
+		"conditions": [
+			{
+				"minecraft:spawns_on_surface": {},
+				"minecraft:weight": {
+					"default": 200
+				},
+				"minecraft:biome_filter": {
+					"all_of": [
+						{
+							"test": "has_biome_tag",
+							"operator": "==",
+							"value": "animal"
+						},
+						{
+							"test": "has_biome_tag",
+							"operator": "!=",
+							"value": "frozen"
+						},
+						{
+							"test": "has_biome_tag",
+							"operator": "!=",
+							"value": "cold"
+						}
+					]
+				},
+                "minecraft:spawns_on_block_prevented_filter": [
+                    "minecraft:water",
+                    "minecraft:flowing_water",
+                    "minecraft:lava",
+                    "minecraft:flowing_lava"
+                ]
+			}
+		]
+	}
+}
