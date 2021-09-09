@@ -15,7 +15,7 @@
 					"value": 0.25
 				},
 				"minecraft:behavior.follow_parent": {
-					"priority": 1
+					"priority": 4
 				},
 				"minecraft:ageable": {
 					"duration": 1200,
@@ -118,6 +118,44 @@
 				"minecraft:variant": {
 					"value": 3
 				}
+			},     
+			"rift:drop_experience_from_forced_attack": {
+			  	"minecraft:experience_reward": {
+					"on_death": "Math.random(4, 7)"
+			  	}
+			},
+			"rift:drop_more_meat_from_utahraptor": {
+				"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_dodo_meat",
+						"num_to_spawn": 2,
+						"single_use": true
+					}
+			 	}
+			},
+			"rift:drop_more_meat_from_tyrannosaurus": {
+			  	"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_dodo_meat",
+						"num_to_spawn": 5,
+						"single_use": true
+					}
+			  	}
+			},
+			"rift:drop_more_meat_from_sarcosuchus": {
+				"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_dodo_meat",
+						"num_to_spawn": 1,
+						"single_use": true
+					}
+			 	}
 			}
 		},
 		"components": {
@@ -152,17 +190,135 @@
 				"suffocate_time": 0
 			},
 			"minecraft:leashable": {},
-			"minecraft:behavior.hurt_by_target": {},
-			"minecraft:behavior.random_stroll": {},
+			"minecraft:behavior.random_stroll": {
+				"priority": 5
+			},
 			"minecraft:movement": {
 				"value": 0.125
 			},
-			"minecraft:behavior.panic": {},
+			"minecraft:behavior.panic": {
+				"priority": 1
+			},
 			"minecraft:damage_sensor": {
 				"triggers": [
 					{
 						"cause": "fall",
 						"deals_damage": false
+					},
+					{
+						"on_damage": {
+							"filters": {
+						  		"all_of": [
+									{
+							  			"test": "is_family",
+							  			"subject": "other",
+							  			"value": "forcedAttack"
+									},
+									{
+							  			"test": "has_damage",
+							  			"subject": "self",
+							  			"value": "fatal"
+									},
+									{
+										"test": "has_component",
+										"subject": "self",
+										"operator": "!=",
+										"value": "minecraft:is_baby"
+									}
+						  		]
+							},
+							"event": "rift:on_force_attacked_death",
+							"target": "self"
+					  	}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "utahraptor"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_dodo_meat_from_utahraptor",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "tyrannosaurus"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_dodo_meat_from_tyrannosaurus",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "sarcosuchus"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_dodo_meat_from_sarcosuchus",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"test": "is_family",
+								"subject": "other",
+								"value": "sarcoSpinAttack"
+							},
+							"event": "rift:hit_by_sarco_spin",
+							"target": "self"
+						}
 					},
 					{
 						"on_damage": {
@@ -351,6 +507,13 @@
 					}
 				]
 			},
+			"rift:hit_by_sarco_spin": {
+				"run_command": {
+					"command": [
+						"effect @s slowness 30 2"
+					]
+				}
+			},
 			"rift:hit_by_frost_dimetrodon": {
 				"run_command": {
 					"command": [
@@ -358,6 +521,104 @@
 						"effect @s slowness 20 2"
 				  	]
 				}
+			},
+			"rift:on_force_attacked_death": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+						  		"rift:drop_experience_from_forced_attack"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "utahraptorForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_utahraptor"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "tyrannosaurusForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_tyrannosaurus"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "sarcosuchusForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_sarcosuchus"
+							]
+					  	}
+					}
+				]
+			},
+			"rift:drop_more_raw_dodo_meat_from_utahraptor": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_utahraptor"
+					]
+			  	}
+			},
+			"rift:drop_more_raw_dodo_meat_from_tyrannosaurus": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_tyrannosaurus"
+					]
+			  	}
+			},
+			"rift:drop_more_raw_dodo_meat_from_sarcosuchus": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_sarcosuchus"
+					]
+			  	}
 			}
 		}
 	}

@@ -10,13 +10,17 @@
 				"contApatoUseStomp": "controller.animation.apato_forced_use_stomp",
 				"contTameTag": "controller.animation.add_tame_tag",
 				"contBabyTag": "controller.animation.add_baby_tag",
+				"contDetectWeapon": "controller.animation.apato_detect_stationary_weapon",
+				"contWildLowHealth": "controller.animation.wild_low_on_health",
 				"animForcedAttack": "animation.forced_attack_apatosaurus"
 			},
 			"scripts": {
 				"animate": [
 					"contApatoUseStomp",
 					"contTameTag",
-					"contBabyTag"
+					"contBabyTag",
+					"contDetectWeapon",
+					"contWildLowHealth"
 				]
 			}
         },
@@ -89,9 +93,11 @@
 				"minecraft:health": {
 					"value": 50
                 },
-                "minecraft:behavior.random_stroll": {},
+                "minecraft:behavior.random_stroll": {
+					"priority": 6
+				},
                 "minecraft:behavior.follow_parent": {
-					"priority": 3
+					"priority": 5
                 },
                 "minecraft:group_size": {
 					"radius": 10,
@@ -112,7 +118,7 @@
 					}
 				},
 				"minecraft:behavior.hurt_by_target": {
-					"priority": 3,
+					"priority": 2,
 					"entity_types": {
 						"filters": {
 						  	"test": "is_family",
@@ -121,6 +127,9 @@
 						  	"value": "forcedAttack"
 						}
 					}
+				},
+				"minecraft:despawn": {
+					"despawn_from_distance": {}
 				}
             },
             "rift:apatosaurus_baby_wild_untameable": {
@@ -210,7 +219,7 @@
 					"value": 1.5
 				},
 				"minecraft:attack": {
-					"damage": 45
+					"damage": 80
 				},
 				"minecraft:experience_reward": {
 					"on_bred": "Math.Random(6,9)",
@@ -262,58 +271,49 @@
 							{
 								"any_of": [
 									{
-										"test": "is_target",
-										"subject": "other",
-										"value": true
-									},
-									{
-										"any_of": [
+										"all_of": [
 											{
-												"all_of": [
-													{
-														"test": "has_component",
-														"subject": "other",
-														"value": "minecraft:is_baby"
-													},
-													{
-														"test": "is_family",
-														"subject": "other",
-														"operator": "!=",
-														"value": "apatosaurus"
-													}
-												]
+												"test": "has_component",
+												"subject": "other",
+												"value": "minecraft:is_baby"
 											},
 											{
 												"test": "is_family",
 												"subject": "other",
-												"value": "chicken"
-											},
-											{
-												"test": "is_family",
-												"subject": "other",
-												"value": "dodo"
-											},
-											{
-												"all_of": [
-													{
-														"test": "is_family",
-														"subject": "other",
-														"value": "parrot"
-													},
-													{
-														"test": "has_component",
-														"subject": "other",
-														"operator": "!=",
-														"value": "minecraft:is_tamed"
-													}
-												]
-											},
-											{
-												"test": "is_family",
-												"subject": "other",
-												"value": "endermite"
+												"operator": "!=",
+												"value": "apatosaurus"
 											}
 										]
+									},
+									{
+										"test": "is_family",
+										"subject": "other",
+										"value": "chicken"
+									},
+									{
+										"test": "is_family",
+										"subject": "other",
+										"value": "dodo"
+									},
+									{
+										"all_of": [
+											{
+												"test": "is_family",
+												"subject": "other",
+												"value": "parrot"
+											},
+											{
+												"test": "has_component",
+												"subject": "other",
+												"operator": "!=",
+												"value": "minecraft:is_tamed"
+											}
+										]
+									},
+									{
+										"test": "is_family",
+										"subject": "other",
+										"value": "endermite"
 									}
 								]
 							}
@@ -325,7 +325,9 @@
 				"minecraft:health": {
 					"value": 200
                 },
-                "minecraft:behavior.random_stroll": {},
+                "minecraft:behavior.random_stroll": {
+					"priority": 5
+				},
 				"minecraft:group_size": {
 					"radius": 10,
 					"filters": {
@@ -348,7 +350,7 @@
 					"despawn_from_distance": {}
 				},
 				"minecraft:behavior.hurt_by_target": {
-					"priority": 1,
+					"priority": 2,
 					"entity_types": {
 						"filters": {
 						  	"test": "is_family",
@@ -465,7 +467,23 @@
 						"rift:dark_oak_thatch_block",
 						"rift:acacia_thatch_block",
 						"rift:crimson_thatch_block",
-						"rift:warped_thatch_block"
+						"rift:warped_thatch_block",
+						"rift:wooden_chair_acacia",
+						"rift:wooden_chair_birch",
+						"rift:wooden_chair_crimson",
+						"rift:wooden_chair_dark_oak",
+						"rift:wooden_chair_jungle",
+						"rift:wooden_chair_oak",
+						"rift:wooden_chair_spruce",
+						"rift:wooden_chair_warped",
+						"rift:wooden_table_acacia",
+						"rift:wooden_table_birch",
+						"rift:wooden_table_crimson",
+						"rift:wooden_table_dark_oak",
+						"rift:wooden_table_jungle",
+						"rift:wooden_table_oak",
+						"rift:wooden_table_spruce",
+						"rift:wooden_table_warped"
 					]
                 }
             },
@@ -671,10 +689,156 @@
 						"rift:dark_oak_thatch_block",
 						"rift:acacia_thatch_block",
 						"rift:crimson_thatch_block",
-						"rift:warped_thatch_block"
+						"rift:warped_thatch_block",
+						"rift:wooden_chair_acacia",
+						"rift:wooden_chair_birch",
+						"rift:wooden_chair_crimson",
+						"rift:wooden_chair_dark_oak",
+						"rift:wooden_chair_jungle",
+						"rift:wooden_chair_oak",
+						"rift:wooden_chair_spruce",
+						"rift:wooden_chair_warped",
+						"rift:wooden_table_acacia",
+						"rift:wooden_table_birch",
+						"rift:wooden_table_crimson",
+						"rift:wooden_table_dark_oak",
+						"rift:wooden_table_jungle",
+						"rift:wooden_table_oak",
+						"rift:wooden_table_spruce",
+						"rift:wooden_table_warped"
 					]
                 }
             },
+			"rift:apatosaurus_at_low_health": {
+				"minecraft:behavior.avoid_mob_type": {
+					"priority": 1,
+					"entity_types": [
+						{
+							"filters": {
+								"any_of": [
+									{
+										"all_of": [
+											{
+												"test": "is_family",
+												"subject": "other",
+												"value": "mob"
+											},
+											{
+												"test": "is_family",
+												"subject": "other",
+												"operator": "!=",
+												"value": "apatosaurus"
+											}
+										]
+									},
+									{
+										"all_of": [
+											{
+												"test": "is_family",
+												"subject": "other",
+												"value": "apatosaurus"
+											},
+											{
+												"test": "has_component",
+												"subject": "other",
+												"operator": "!=",
+												"value": "minecraft:is_tamed"
+											}
+										]
+									}
+								]
+							},
+							"max_dist": 8,
+							"walk_speed_multiplier": 1.75,
+							"sprint_speed_multiplier": 1.75
+						}
+					]
+				}
+			},
+			"rift:no_tail_whip": {
+				"minecraft:entity_sensor": {
+					"sensor_range": 4,
+					"relative_range": false,
+					"minimum_count": 1,
+					"event_filters": {
+						"any_of": [
+							{
+								"all_of": [
+									{
+										"any_of": [
+											{
+												"test": "is_family",
+												"subject": "other",
+												"value": "mob"
+											},
+											{
+												"test": "is_family",
+												"subject": "other",
+												"value": "player"
+											}
+										]
+									},
+									{
+										"test": "is_family",
+										"subject": "other",
+										"operator": "!=",
+										"value": "apatosaurus"
+									}
+								]
+							},
+							{
+								"all_of": [
+									{
+										"test": "is_family",
+										"subject": "other",
+										"value": "apatosaurus"
+									},
+									{
+										"test": "has_component",
+										"subject": "other",
+										"operator": "!=",
+										"value": "minecraft:is_tamed"
+									}
+								]
+							}
+						]
+					},
+					"event": "rift:use_whip"
+				}
+			},
+			"rift:apatosaurus_tail_whip": {
+				"minecraft:is_charged": {},
+				"minecraft:spawn_entity": {
+					"entities": [
+						{
+							"spawn_entity": "rift:apatosaurus_tail_whip_wild",
+							"single_use": true,
+							"min_wait_time": 0,
+							"max_wait_time": 0,
+							"spawn_event": "minecraft:entity_spawned"
+						}
+					]
+				},
+				"minecraft:timer": {
+					"looping": false,
+					"time": 0.60,
+					"time_down_event": {
+						"event": "rift:stop_using_whip",
+						"target": "self"
+					}
+				}
+			},
+			"rift:tail_whip_cooldown": {
+				"minecraft:is_charged": {},
+				"minecraft:timer": {
+					"looping": false,
+					"time": 1.5,
+					"time_down_event": {
+						"event": "rift:end_whip_cooldown",
+						"target": "self"
+					}
+				}
+			},
             "rift:apatosaurus_tamed": {
 				"minecraft:behavior.owner_hurt_by_target": {
 					"priority": 2,
@@ -690,7 +854,7 @@
 					]
 				},
 				"minecraft:behavior.owner_hurt_target": {
-					"priority": 2,
+					"priority": 3,
 					"entity_types": [
 						{
 							"filters": {
@@ -705,7 +869,7 @@
 				"minecraft:behavior.follow_owner": {
 					"start_distance": 8,
 					"stop_distance": 40,
-					"priority": 3
+					"priority": 5
 				},
 				"minecraft:is_tamed": {}
             },
@@ -738,15 +902,11 @@
 					"value": 2
 				}
 			},
-            "rift:apatosaurus_harvest": {
-				"minecraft:timer": {
-					"time": 0.52,
-					"time_down_event": {
-						"event": "rift:apato_no_harvest",
-						"target": "self"
-					}
+			"rift:apatosaurus_has_catapults": {
+				"minecraft:skin_id": {
+					"value": 3
 				}
-            },
+			},
             "rift:apatosaurus_rideable": {
 				"minecraft:rideable": {
 					"seat_count": 3,
@@ -844,7 +1004,9 @@
             },
             "rift:apatosaurus_sittable": {
 				"minecraft:sittable": {},
-				"minecraft:behavior.stay_while_sitting": {}
+				"minecraft:behavior.stay_while_sitting": {
+					"priority": 0
+				}
 			},
 			"rift:apatosaurus_fire_cannon": {
 				"minecraft:spawn_entity": {
@@ -859,6 +1021,38 @@
 					"time": 0.05,
 					"time_down_event":{
 						"event": "rift:stop_firing",
+						"target": "self"
+					}
+				},
+				"minecraft:collision_box": {
+					"height": 0.5,
+					"width": 2.25
+				}
+			},
+			"rift:apatosaurus_play_catapult_animation": {
+				"minecraft:timer": {
+					"time": 0.12,
+					"looping": false,
+					"time_down_event":{
+						"event": "rift:apato_catapult_launch",
+						"target": "self"
+					}
+				}
+			},
+			"rift:apatosaurus_launch_catapult": {
+				"minecraft:spawn_entity": {
+					"entities": {
+						"spawn_entity": "rift:catapult_boulder",
+						"single_use": true,
+						"min_wait_time": 0,
+						"max_wait_time": 0
+					}
+				},
+				"minecraft:timer": {
+					"time": 0.40,
+					"looping": false,
+					"time_down_event":{
+						"event": "rift:stop_launching",
 						"target": "self"
 					}
 				},
@@ -921,7 +1115,7 @@
 			},
 			"rift:attack_forced_attack_entity": {
 				"minecraft:behavior.nearest_attackable_target": {
-					"priority": 2,
+					"priority": 3,
 					"entity_types": [
 					  	{
 							"filters": {
@@ -937,6 +1131,49 @@
 					"event": "rift:no_force_attacked",
 					"target": "self"
 				}
+			},     
+			"rift:baby_drop_experience_from_forced_attack": {
+			  	"minecraft:experience_reward": {
+					"on_death": "Math.Random(8,12)"
+			  	}
+			},
+			"rift:adult_drop_experience_from_forced_attack": {
+			  	"minecraft:experience_reward": {
+					"on_death": "Math.Random(15,20)"
+			  	}
+			},
+			"rift:drop_more_meat_from_utahraptor": {
+				"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_exotic_meat",
+						"num_to_spawn": 2,
+						"single_use": true
+					}
+			 	}
+			},
+			"rift:drop_more_meat_from_tyrannosaurus": {
+			  	"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_exotic_meat",
+						"num_to_spawn": 5,
+						"single_use": true
+					}
+			  	}
+			},
+			"rift:drop_more_meat_from_sarcosuchus": {
+				"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_exotic_meat",
+						"num_to_spawn": 1,
+						"single_use": true
+					}
+			 	}
 			}
         },
         "components": {
@@ -953,7 +1190,9 @@
 				"avoid_damage_blocks": true
 			},
 			"minecraft:movement.basic": {},
-			"minecraft:behavior.breed": {},
+			"minecraft:behavior.breed": {
+				"priority": 1
+			},
 			"minecraft:jump.static": {},
 			"minecraft:behavior.move_to_land": {},
 			"minecraft:collision_box": {
@@ -961,7 +1200,7 @@
 				"width": 2.25
 			},
 			"minecraft:behavior.delayed_attack": {
-				"priority": 0,
+				"priority": 4,
 				"attack_duration": 3,
 				"hit_delay_pct": 1,
 				"track_target": true,
@@ -1025,12 +1264,158 @@
 										"subject": "self",
 										"operator": "!=",
 										"value": "minecraft:is_baby"
+									},
+									{
+							  			"test": "has_damage",
+							  			"subject": "self",
+										"operator": "!=",
+							  			"value": "fatal"
 									}
 							  	]
 							},
 							"event": "rift:on_force_attacked",
 							"target": "self"
 						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+						  		"all_of": [
+									{
+							  			"test": "is_family",
+							  			"subject": "other",
+							  			"value": "forcedAttack"
+									},
+									{
+							  			"test": "has_damage",
+							  			"subject": "self",
+							  			"value": "fatal"
+									},
+									{
+							  			"test": "has_component",
+							  			"subject": "self",
+							  			"value": "minecraft:is_baby"
+									}
+						  		]
+							},
+							"event": "rift:on_force_attacked_death_baby",
+							"target": "self"
+					  	}
+					},
+					{
+						"on_damage": {
+							"filters": {
+						  		"all_of": [
+									{
+							  			"test": "is_family",
+							  			"subject": "other",
+							  			"value": "forcedAttack"
+									},
+									{
+							  			"test": "has_damage",
+							  			"subject": "self",
+							  			"value": "fatal"
+									},
+									{
+							  			"test": "has_component",
+							  			"subject": "self",
+							  			"operator": "!=",
+							  			"value": "minecraft:is_baby"
+									}
+						  		]
+							},
+							"event": "rift:on_force_attacked_death_adult",
+							"target": "self"
+					  	}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "utahraptor"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_exotic_meat_from_utahraptor",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "tyrannosaurus"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_exotic_meat_from_tyrannosaurus",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "sarcosuchus"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_exotic_meat_from_sarcosuchus",
+							"target": "self"
+						}
+					},
+					{
+					  	"on_damage": {
+							"filters": {
+						  		"test": "is_family",
+						  		"subject": "other",
+						  		"value": "sarcoSpinAttack"
+							},
+							"event": "rift:hit_by_sarco_spin",
+							"target": "self"
+					  	}
 					},
 					{
 						"on_damage": {
@@ -1197,6 +1582,55 @@
 										"test": "has_equipment",
 										"subject": "other",
 										"domain": "hand",
+										"value": "rift:catapult"
+									},
+									{
+										"test": "is_owner",
+										"subject": "other",
+										"value": true
+									},
+									{
+										"test": "has_component",
+										"subject": "self",
+										"value": "minecraft:is_baby",
+										"operator": "!="
+									},
+									{
+										"test": "has_component",
+										"subject": "self",
+										"value": "minecraft:is_tamed"
+									},
+									{
+										"test": "has_component",
+										"subject": "self",
+										"value": "minecraft:is_saddled"
+									},
+									{
+										"test": "is_skin_id",
+										"subject": "self",
+										"value": 0
+									},
+									{
+										"test": "is_sneaking",
+										"subject": "other",
+										"value": true
+									}
+								]
+							},
+							"event": "rift:attach_catapult",
+							"target": "self"
+						},
+						"interact_text": "action.interact.attachchest",
+						"use_item": true
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
 										"value": "rift:wrench"
 									},
 									{
@@ -1335,6 +1769,55 @@
 							"filters": {
 								"all_of": [
 									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "rift:catapult_boulder"
+									},
+									{
+										"test": "is_owner",
+										"subject": "other",
+										"value": true
+									},
+									{
+										"test": "has_component",
+										"subject": "self",
+										"value": "minecraft:is_baby",
+										"operator": "!="
+									},
+									{
+										"test": "has_component",
+										"subject": "self",
+										"value": "minecraft:is_saddled"
+									},
+									{
+										"test": "has_component",
+										"subject": "self",
+										"value": "minecraft:is_tamed"
+									},
+									{
+										"test": "is_skin_id",
+										"subject": "self",
+										"value": 3
+									},
+									{
+										"test": "is_sneaking",
+										"subject": "other",
+										"value": true
+									}
+								]
+							},
+							"event": "rift:attach_catapult_boulder",
+							"target": "self"
+						},
+						"interact_text": "action.interact.insertcannon",
+						"use_item": true
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
 										"any_of": [
 											{
 												"test": "has_equipment",
@@ -1456,7 +1939,7 @@
 								}
 							]
 						},
-						"event": "rift:apato_firing"
+						"event": "rift:apato_check_if_can_fire"
 					},
 					{
 						"filters": {
@@ -1501,7 +1984,7 @@
 								}
 							]
 						},
-						"event": "rift:apato_mortaring_not_underground"
+						"event": "rift:apato_check_if_can_mortar_not_underground"
 					},
 					{
 						"filters": {
@@ -1546,7 +2029,47 @@
 								}
 							]
 						},
-						"event": "rift:apato_mortaring_underground"
+						"event": "rift:apato_check_if_can_mortar_is_underground"
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "has_tag",
+									"value": "apatoCatapultLaunch",
+									"subject": "self",
+									"operator": "=="
+								},
+								{
+									"test": "rider_count",
+									"operator": ">",
+									"value": 0,
+									"subject": "self"
+								},
+								{
+									"test": "has_component",
+									"value": "minecraft:is_tamed",
+									"subject": "self"
+								},
+								{
+									"test": "is_skin_id",
+									"subject": "self",
+									"value": 3
+								},
+								{
+									"test": "has_component",
+									"operator": "!=",
+									"value": "minecraft:is_baby",
+									"subject": "self"
+								},
+								{
+									"test": "has_component",
+									"value": "minecraft:is_saddled",
+									"subject": "self"
+								}
+							]
+						},
+						"event": "rift:apato_check_if_can_catapult"
 					},
 					{
 						"filters": {
@@ -2029,6 +2552,23 @@
 					]
 				}
 			},
+			"rift:attach_catapult": {
+				"add": {
+					"component_groups": [
+						"rift:apatosaurus_has_catapults"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"rift:apatosaurus_no_weapons"
+					]
+				},
+				"run_command": {
+					"command": [
+						"scoreboard players set @s apatoCatapultBld 0"
+					]
+				}
+			},
 			"rift:remove_platform_weapons": {
 				"sequence": [
 					{
@@ -2066,6 +2606,23 @@
 						}
 					},
 					{
+						"filters": {
+							"test": "is_skin_id",
+							"subject": "self",
+							"value": 3
+						},
+						"remove": {
+							"component_groups": [
+								"rift:apatosaurus_has_catapults"
+							]
+						},
+						"run_command": {
+							"command": [
+								"summon rift:apato_drops_after_platform_removal ~ ~+3 ~ rift:catapult_dropper"
+							]
+						}
+					},
+					{
 						"add": {
 							"component_groups": [
 								"rift:apatosaurus_no_weapons"
@@ -2074,19 +2631,13 @@
 					}
 				]
 			},
-            "rift:apato_no_harvest": {
-                "remove": {
-                    "component_groups": [
-                        "rift:apatosaurus_harvest"
-                    ]
-                }
-            },
-            "rift:apato_harvesting": {
-                "add": {
-                    "component_groups": [
-                        "rift:apatosaurus_harvest"
-                    ]
-                }
+			"rift:apato_check_if_can_fire": {
+				"run_command": {
+					"command": [
+						"execute @s[scores={apatoCannonballs=0}] ~ ~ ~ tellraw @p[c=1] {\"rawtext\":[{\"text\":\"No Cannonballs left in stock!\"}]}",
+						"event entity @s[scores={apatoCannonballs=!0}] rift:apato_firing"
+					]
+				}
 			},
 			"rift:apato_firing": {
 				"add": {
@@ -2101,17 +2652,31 @@
 				},
 				"run_command": {
 					"command": [
-						"scoreboard players remove @s[scores={apatoCannonballs=!0}] apatoCannonballs 1",
-						"execute @s[scores={apatoCannonballs=0}] ~ ~ ~ tellraw @p[c=1] {\"rawtext\":[{\"text\":\"No Cannonballs left in stock!\"}]}"
+						"scoreboard players remove @s[scores={apatoCannonballs=!0}] apatoCannonballs 1"
+					]
+				}
+			},
+			"rift:apato_check_if_can_mortar_not_underground": {
+				"run_command": {
+					"command": [
+						"execute @s[scores={apatoMortarShell=0}] ~ ~ ~ tellraw @p[c=1] {\"rawtext\":[{\"text\":\"No Mortar Shells left in stock!\"}]}",
+						"event entity @s[scores={apatoMortarShell=!0}] rift:apato_mortaring_not_underground"
 					]
 				}
 			},
 			"rift:apato_mortaring_not_underground": {
 				"run_command": {
 					"command": [
-						"execute @s[scores={apatoMortarShell=!0}] ~ ~ ~ execute @e[tag=!tamed, type=!player, type=!item, type=!rift:mortar, type=!rift:mortar_shell, type=!rift:egg, c=1, rm=16, r=64] ~ ~ ~ summon rift:mortar_shell ~ ~+30 ~",
 						"scoreboard players remove @s[scores={apatoMortarShell=!0}] apatoMortarShell 1",
-						"execute @s[scores={apatoMortarShell=0}] ~ ~ ~ tellraw @p[c=1] {\"rawtext\":[{\"text\":\"No Mortar Shells left in stock!\"}]}"
+						"execute @s[scores={apatoMortarShell=!0}] ~ ~ ~ execute @e[tag=!tamed, type=!player, type=!item, type=!rift:mortar, type=!rift:mortar_shell, type=!rift:egg, c=1, rm=16, r=64] ~ ~ ~ summon rift:mortar_shell ~ ~+30 ~"
+					]
+				}
+			},
+			"rift:apato_check_if_can_mortar_is_underground": {
+				"run_command": {
+					"command": [
+						"execute @s[scores={apatoMortarShell=0}] ~ ~ ~ tellraw @p[c=1] {\"rawtext\":[{\"text\":\"No Mortar Shells left in stock!\"}]}",
+						"event entity @s[scores={apatoMortarShell=!0}] rift:apato_mortaring_underground"
 					]
 				}
 			},
@@ -2119,8 +2684,7 @@
 				"run_command": {
 					"command": [
 						"execute @s[scores={apatoMortarShell=!0}] ~ ~ ~ summon rift:mortar_shell ~ ~ ~ rift:spawned_while_underground",
-						"scoreboard players remove @s[scores={apatoMortarShell=!0}] apatoMortarShell 1",
-						"execute @s[scores={apatoMortarShell=0}] ~ ~ ~ tellraw @p[c=1] {\"rawtext\":[{\"text\":\"No Mortar Shells left in stock!\"}]}"
+						"scoreboard players remove @s[scores={apatoMortarShell=!0}] apatoMortarShell 1"
 					]
 				}
 			},
@@ -2133,6 +2697,56 @@
 				"remove": {
 					"component_groups": [
 						"rift:apatosaurus_fire_cannon"
+					]
+				}
+			},
+			"rift:apato_check_if_can_catapult": {
+				"run_command": {
+					"command": [
+						"execute @s[scores={apatoCatapultBld=0}] ~ ~ ~ tellraw @p[c=1] {\"rawtext\":[{\"text\":\"No Catapult Boulders left in stock!\"}]}",
+						"event entity @s[scores={apatoCatapultBld=!0}] rift:apato_play_catapult_anim"
+					]
+				}
+			},
+			"rift:apato_play_catapult_anim": {
+				"add": {
+					"component_groups": [
+						"rift:apatosaurus_play_catapult_animation"
+					]
+				},
+				"run_command": {
+					"command": [
+						"playanimation @s animation.apatosaurus.use_catapult"
+					]
+				}
+			},
+			"rift:apato_catapult_launch": {
+				"add": {
+					"component_groups": [
+						"rift:apatosaurus_launch_catapult"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"rift:default_collision",
+						"rift:apatosaurus_play_catapult_animation"
+					]
+				},
+				"run_command": {
+					"command": [
+						"scoreboard players remove @s[scores={apatoCatapultBld=!0}] apatoCatapultBld 1"
+					]
+				}
+			},
+			"rift:stop_launching": {
+				"add": {
+					"component_groups": [
+						"rift:default_collision"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"rift:apatosaurus_launch_catapult"
 					]
 				}
 			},
@@ -2259,6 +2873,15 @@
 					]
 				}
 			},
+			"rift:attach_catapult_boulder": {
+				"run_command": {
+					"command": [
+						"scoreboard players add @s[scores={apatoCatapultBld=!24}] apatoCatapultBld 1",
+						"execute @s[scores={apatoCatapultBld=24}] ~ ~ ~ tellraw @a[c=1] {\"rawtext\":[{\"text\":\"Maximum amount of catapult boulders that can be stored is 24\"}]}",
+						"execute @s[scores={apatoCatapultBld=!24}] ~ ~ ~ playsound armor.equip_iron @p"
+					]
+				}
+			},
 			"rift:use_forced_stomp": {
 				"add": {
 					"component_groups": [
@@ -2332,12 +2955,252 @@
 				  	]
 				}
 			},
+			"rift:hit_by_sarco_spin": {
+				"run_command": {
+					"command": [
+						"effect @s slowness 30 2"
+					]
+				}
+			},
 			"rift:hit_by_frost_dimetrodon": {
 				"run_command": {
 					"command": [
 						"effect @s weakness 20 2",
 						"effect @s slowness 20 2"
 				  	]
+				}
+			},
+			"rift:on_force_attacked_death_baby": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+						  		"rift:baby_drop_experience_from_forced_attack"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "utahraptorForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_utahraptor"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "tyrannosaurusForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_tyrannosaurus"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "sarcosuchusForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_sarcosuchus"
+							]
+					  	}
+					}
+				]
+			},
+			"rift:on_force_attacked_death_adult": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+						  		"rift:adult_drop_experience_from_forced_attack"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "utahraptorForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_utahraptor"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "tyrannosaurusForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_tyrannosaurus"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "sarcosuchusForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_sarcosuchus"
+							]
+					  	}
+					}
+				]
+			},
+			"rift:drop_more_raw_exotic_meat_from_utahraptor": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_utahraptor"
+					]
+			  	}
+			},
+			"rift:drop_more_raw_exotic_meat_from_tyrannosaurus": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_tyrannosaurus"
+					]
+			  	}
+			},
+			"rift:drop_more_raw_exotic_meat_from_sarcosuchus": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_sarcosuchus"
+					]
+			  	}
+			},
+			"rift:low_health_mode": {
+				"add": {
+					"component_groups": [
+						"rift:apatosaurus_at_low_health",
+						"rift:no_tail_whip"
+					]
+				}
+			},
+			"rift:exit_low_health_mode": {
+				"remove": {
+					"component_groups": [
+						"rift:apatosaurus_at_low_health",
+						"rift:no_tail_whip",
+						"rift:apatosaurus_tail_whip",
+						"rift:tail_whip_cooldown"
+					]
+				}
+			},
+			"rift:use_whip": {
+				"add": {
+					"component_groups": [
+						"rift:apatosaurus_tail_whip",
+						"rift:unpushable"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"rift:no_tail_whip",
+						"rift:pushable"
+					]
+				}
+			},
+			"rift:stop_using_whip": {
+				"add": {
+					"component_groups": [
+						"rift:tail_whip_cooldown"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"rift:apatosaurus_tail_whip"
+					]
+				}
+			},
+			"rift:end_whip_cooldown": {
+				"add": {
+					"component_groups": [
+						"rift:no_tail_whip",
+						"rift:pushable"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"rift:tail_whip_cooldown",
+						"rift:unpushable"
+					]
 				}
 			}
 		}

@@ -11,14 +11,21 @@
 				"contTyrannoUseBite": "controller.animation.tyranno_forced_use_bite",
 				"contTameTag": "controller.animation.add_tame_tag",
 				"contBabyTag": "controller.animation.add_baby_tag",
-				"animForcedAttack": "animation.forced_attack_tyrannosaurus"
+				"contTyrannoEndRoarCooldown": "controller.animation.tyranno_end_roar_cooldown",
+				"contIntimidate": "controller.animation.tyranno_intimidate",
+				"animForcedAttack": "animation.forced_attack_tyrannosaurus",
+				"animTyrannoRoarCooldown": "animation.tyranno_roar_cooldown",
+				"animIntimidateWild": "animation.apex_predator_intimidate_wild",
+				"animIntimidateTamed": "animation.apex_predator_intimidate_tamed"
 			},
 			"scripts": {
 				"animate": [
 					"contRoarBreak",
 					"contTyrannoUseBite",
 					"contTameTag",
-					"contBabyTag"
+					"contBabyTag",
+					"contTyrannoEndRoarCooldown",
+					"contIntimidate"
 				]
 			}
 		},
@@ -107,7 +114,7 @@
 					"end_scale": 1.75
 				},
 				"minecraft:behavior.tempt": {
-					"priority": 2,
+					"priority": 5,
 					"items": [
 						"minecraft:beef",
 						"minecraft:cooked_beef",
@@ -137,7 +144,9 @@
 				"minecraft:health": {
 					"value": 30
 				},
-				"minecraft:behavior.random_stroll": {},
+				"minecraft:behavior.random_stroll": {
+					"priority": 6
+				},
 				"minecraft:tameable": {
 					"probability": 0.25,
 					"tame_items": [
@@ -149,7 +158,7 @@
 					}
 				},
 				"minecraft:behavior.hurt_by_target": {
-					"priority": 3,
+					"priority": 2,
 					"entity_types": {
 						"filters": {
 						  	"test": "is_family",
@@ -158,6 +167,9 @@
 							"value": "forcedAttack"
 						}
 					}
+				},
+				"minecraft:despawn": {
+					"despawn_from_distance": {}
 				}
 			},
 			"rift:tyrannosaurus_baby_tamed": {
@@ -206,22 +218,24 @@
 					"priority": 2
 				},
 				"minecraft:behavior.owner_hurt_target": {
-					"priority": 2
+					"priority": 3
 				},
 				"minecraft:behavior.follow_owner": {
-					"priority": 3
+					"priority": 5
 				}
 			},
 			"rift:tyrannosaurus_adult_wild": {
 				"minecraft:health": {
 					"value": 160
 				},
-				"minecraft:behavior.random_stroll": {},
+				"minecraft:behavior.random_stroll": {
+					"priority": 6
+				},
 				"minecraft:despawn": {
 					"despawn_from_distance": {}
 				},
 				"minecraft:behavior.hurt_by_target": {
-					"priority": 3,
+					"priority": 2,
 					"entity_types": {
 						"filters": {
 						  	"test": "is_family",
@@ -406,7 +420,7 @@
 					}
 				},
 				"minecraft:behavior.nearest_attackable_target": {
-					"priority": 2,
+					"priority": 3,
 					"reselect_targets": true,
 					"within_radius": 48,
 					"must_see": true,
@@ -444,7 +458,7 @@
 					}
 				},
 				"minecraft:behavior.nearest_attackable_target": {
-					"priority": 2,
+					"priority": 3,
 					"must_see": false,
 					"within_radius": 50,
 					"persist_time": 25,
@@ -493,9 +507,18 @@
 									{
 										"any_of": [
 											{
-												"test": "is_family",
-												"subject": "other",
-												"value": "player"
+												"all_of": [
+													{
+														"test": "is_family",
+														"subject": "other",
+														"value": "player"
+													},
+													{
+														"test": "is_riding",
+														"subject": "other",
+														"value": false
+													}
+												]
 											},
 											{
 												"test": "is_family",
@@ -517,7 +540,7 @@
 			},
 			"rift:attack_forced_attack_entity": {
 				"minecraft:behavior.nearest_attackable_target": {
-					"priority": 2,
+					"priority": 3,
 					"entity_types": [
 					  	{
 							"filters": {
@@ -560,7 +583,9 @@
 			},
 			"rift:tyrannosaurus_sittable": {
 				"minecraft:sittable": {},
-				"minecraft:behavior.stay_while_sitting": {}
+				"minecraft:behavior.stay_while_sitting": {
+					"priority": 0
+				}
 			},
 			"rift:tyrannosaurus_saddled": {
 				"minecraft:is_saddled": {},
@@ -642,6 +667,7 @@
 				"minecraft:is_sheared": {},
 				"minecraft:timer": {
 					"time": 10,
+					"looping": false,
 					"time_down_event": {
 						"event": "rift:stop_roaring_cooldown",
 						"target": "self"
@@ -682,6 +708,44 @@
 						"isForcedAttacking"
 					]
 				}
+			},
+			"rift:drop_experience_from_forced_attack": {
+			  	"minecraft:experience_reward": {
+					"on_death": "Math.Random(7,12)"
+			  	}
+			},
+			"rift:drop_more_meat_from_utahraptor": {
+				"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_exotic_meat",
+						"num_to_spawn": 2,
+						"single_use": true
+					}
+			 	}
+			},
+			"rift:drop_more_meat_from_tyrannosaurus": {
+			  	"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_exotic_meat",
+						"num_to_spawn": 5,
+						"single_use": true
+					}
+			  	}
+			},
+			"rift:drop_more_meat_from_sarcosuchus": {
+				"minecraft:spawn_entity": {
+					"entities": {
+						"min_wait_time": 0,
+						"max_wait_time": 0,
+						"spawn_item": "rift:raw_exotic_meat",
+						"num_to_spawn": 1,
+						"single_use": true
+					}
+			 	}
 			}
 		},
 		"components": {
@@ -700,7 +764,9 @@
 			},
 			"minecraft:movement.generic": {},
 			"minecraft:behavior.move_to_land": {},
-			"minecraft:behavior.breed": {},
+			"minecraft:behavior.breed": {
+				"priority": 1
+			},
 			"minecraft:jump.static": {},
 			"minecraft:is_hidden_when_invisible": {},
 			"minecraft:physics": {},
@@ -715,7 +781,7 @@
 				"max_distance": 15
 			},
 			"minecraft:behavior.delayed_attack": {
-				"priority": 0,
+				"priority": 4,
 				"attack_duration": 0.5,
 				"hit_delay_pct": 1,
 				"track_target": true,
@@ -917,11 +983,121 @@
 										"subject": "self",
 										"operator": "!=",
 										"value": "minecraft:is_tamed"
-							  		}
+							  		},
+									{
+										"test": "has_damage",
+										"subject": "self",
+										"operator": "!=",
+										"value": "fatal"
+									}
 								]
 						  	},
 						  	"event": "rift:on_force_attacked",
 						  	"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+						  		"all_of": [
+									{
+							  			"test": "is_family",
+							  			"subject": "other",
+							  			"value": "forcedAttack"
+									},
+									{
+							  			"test": "has_damage",
+							  			"subject": "self",
+							  			"value": "fatal"
+									},
+									{
+										"test": "has_component",
+										"subject": "self",
+										"operator": "!=",
+										"value": "minecraft:is_baby"
+									}
+						  		]
+							},
+							"event": "rift:on_force_attacked_death",
+							"target": "self"
+					  	}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "utahraptor"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_exotic_meat_from_utahraptor",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "tyrannosaurus"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_exotic_meat_from_tyrannosaurus",
+							"target": "self"
+						}
+					},
+					{
+						"on_damage": {
+							"filters": {
+                				"all_of": [
+                  					{
+                    					"test": "is_family",
+                    					"subject": "other",
+                    					"value": "sarcosuchus"
+                  					},
+                  					{
+                    					"test": "has_component",
+                    					"subject": "self",
+                    					"operator": "!=",
+                    					"value": "minecraft:is_baby"
+                  					},
+				                	{
+                    					"test": "has_damage",
+                    					"subject": "self",
+                    					"value": "fatal"
+                  					}
+                				]
+							},
+							"event": "rift:drop_more_raw_exotic_meat_from_sarcosuchus",
+							"target": "self"
 						}
 					},
 					{
@@ -948,7 +1124,9 @@
 					}
 				]
 			},
-			"minecraft:behavior.random_look_around": {},
+			"minecraft:behavior.random_look_around": {
+				"priority": 7
+			},
 			"minecraft:environment_sensor": {
 				"triggers": [
 					{
@@ -1544,6 +1722,104 @@
 						"effect @s slowness 20 2"
 				  	]
 				}
+			},
+			"rift:on_force_attacked_death": {
+				"sequence": [
+					{
+						"add": {
+							"component_groups": [
+						  		"rift:drop_experience_from_forced_attack"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "utahraptorForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_utahraptor"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "tyrannosaurusForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_tyrannosaurus"
+							]
+					  	}
+					},
+					{
+					  	"filters": {
+							"all_of": [
+						  		{
+									"test": "is_family",
+									"subject": "other",
+									"value": "sarcosuchusForcedAttack"
+						  		},
+						  		{
+									"test": "has_component",
+									"subject": "self",
+									"operator": "!=",
+									"value": "minecraft:is_baby"
+						  		}
+							]
+					  	},
+					  	"add": {
+							"component_groups": [
+						  		"rift:drop_more_meat_from_sarcosuchus"
+							]
+					  	}
+					}
+				]
+			},
+			"rift:drop_more_raw_exotic_meat_from_utahraptor": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_utahraptor"
+					]
+			  	}
+			},
+			"rift:drop_more_raw_exotic_meat_from_tyrannosaurus": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_tyrannosaurus"
+					]
+			  	}
+			},
+			"rift:drop_more_raw_exotic_meat_from_sarcosuchus": {
+			  	"add": {
+					"component_groups": [
+				  		"rift:drop_more_meat_from_sarcosuchus"
+					]
+			  	}
 			}
 		}
 	}

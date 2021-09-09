@@ -95,6 +95,22 @@
           "event": "rift:no_force_attacked",
           "target": "self"
         }
+      },     
+      "rift:drop_experience_from_forced_attack": {
+        "minecraft:experience_reward": {
+          "on_death": "5 + (query.equipment_count * Math.Random(1,3))"
+        }
+      },
+      "rift:drop_more_bones_from_tyrannosaurus": {
+        "minecraft:spawn_entity": {
+          "entities": {
+              "min_wait_time": 0,
+              "max_wait_time": 0,
+              "spawn_item": "bone",
+              "num_to_spawn": 5,
+              "single_use": true
+          }
+        }
       }
     },
 
@@ -583,6 +599,12 @@
                     "test": "has_target",
                     "subject": "self",
                     "value": false
+                  },
+                  {
+                    "test": "has_damage",
+                    "subject": "self",
+                    "operator": "!=",
+                    "value": "fatal"
                   }
                 ]
               },
@@ -590,6 +612,46 @@
               "target": "self"
             }
           },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "forcedAttack"
+                  },
+                  {
+                    "test": "has_damage",
+                    "subject": "self",
+                    "value": "fatal"
+                  }
+                ]
+              },
+              "event": "rift:on_force_attacked_death",
+              "target": "self"
+            }
+          },
+					{
+						"on_damage": {
+							"filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "value": "tyrannosaurus"
+                  },
+                  {
+                    "test": "has_damage",
+                    "subject": "self",
+                    "value": "fatal"
+                  }
+                ]
+							},
+							"event": "rift:drop_more_bones_from_tyrannosaurus",
+							"target": "self"
+						}
+					},
           {
             "on_damage": {
               "filters": {
@@ -663,7 +725,47 @@
 						"effect @s slowness 20 2"
 				  	]
 				}
-			}
+			},
+      "rift:on_force_attacked_death": {
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "rift:drop_experience_from_forced_attack"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "all_of": [
+                {
+                  "test": "is_family",
+                  "subject": "other",
+                  "value": "tyrannosaurusForcedAttack"
+                },
+                {
+                  "test": "has_component",
+                  "subject": "self",
+                  "operator": "!=",
+                  "value": "minecraft:is_baby"
+                }
+              ]
+            },
+            "add": {
+              "component_groups": [
+                "rift:drop_more_bones_from_tyrannosaurus"
+              ]
+            }
+          }
+        ]
+      },
+      "rift:drop_more_bones_from_tyrannosaurus": {
+        "add": {
+          "component_groups": [
+            "rift:drop_more_bones_from_tyrannosaurus"
+          ]
+        }
+      }
     }
   }
 }
