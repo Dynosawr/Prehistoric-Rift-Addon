@@ -10,6 +10,7 @@
 				"contSarcoUseForcedAttack": "controller.animation.sarco_forced_use_attack",
 				"contTameTag": "controller.animation.add_tame_tag",
 				"contBabyTag": "controller.animation.add_baby_tag",
+				"contRiddenTag": "controller.animation.add_ridden_tag",
 				"contSpinAttack": "controller.animation.sarco_use_spin_attack",
 				"contSarcoEndSpinCooldown": "controller.animation.sarco_end_spin_cooldown",
 				"animWildSpinAttackWater": "animation.sarco_spin_attack_wild_water",
@@ -24,6 +25,7 @@
 					"contSarcoUseForcedAttack",
 					"contTameTag",
 					"contBabyTag",
+					"contRiddenTag",
 					"contSpinAttack",
 					"contSarcoEndSpinCooldown"
 				]
@@ -197,7 +199,7 @@
             "rift:sarcosuchus_baby_tamed": {
                 "minecraft:health": {
                     "value": 20,
-                    "max": 25
+                    "max": 20
                 }
             },
             "rift:sarcosuchus_adult": {
@@ -233,7 +235,8 @@
             },
             "rift:sarcosuchus_adult_wild": {
                 "minecraft:health": {
-                    "value": 120
+                    "value": 80,
+                    "max": 80
                 },
                 "minecraft:behavior.random_swim": {
                     "priority": 6,
@@ -463,8 +466,8 @@
             },
             "rift:sarcosuchus_adult_tamed": {
                 "minecraft:health": {
-                    "value": 120,
-                    "max": 150
+                    "value": 80,
+                    "max": 80
                 },
 				"minecraft:attack": {
 					"damage": 15
@@ -1020,20 +1023,10 @@
 							"filters": {
 								"all_of": [
 									{
-										"any_of": [
-											{
-												"test": "has_equipment",
-												"subject": "other",
-												"domain": "hand",
-												"value": "minecraft:potion:23"
-											},
-											{
-												"test": "has_equipment",
-												"subject": "other",
-												"domain": "hand",
-												"value": "minecraft:potion:24"
-											}
-										]
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "rift:euthanasia"
 									},
 									{
 										"test": "is_owner",
@@ -1061,8 +1054,7 @@
 							"event": "rift:commit_suicide",
 							"target": "self"
 						},
-						"use_item": true,
-						"transform_to_item": "minecraft:glass_bottle"
+						"use_item": true
 					}
 				]
             },
@@ -2026,12 +2018,56 @@
 			},
 			"rift:on_force_attacked_death": {
 				"sequence": [
+					{},
 					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"operator": "!=",
+									"value": "sarcoSpinAttack"
+								},
+								{
+								  	"test": "has_component",
+								  	"subject": "self",
+								  	"operator": "!=",
+								  	"value": "minecraft:is_baby"
+								}
+							]
+						},
 						"add": {
 							"component_groups": [
-						  		"rift:drop_experience_from_forced_attack"
+								"rift:drop_experience_from_forced_attack"
 							]
-					  	}
+						}
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "sarcoSpinAttack"
+								},
+								{
+									"test": "has_component",
+									"subject": "other",
+									"value": "minecraft:is_tamed"
+								},
+								{
+								  	"test": "has_component",
+								  	"subject": "self",
+								  	"operator": "!=",
+								  	"value": "minecraft:is_baby"
+								}
+							]
+						},
+						"add": {
+							"component_groups": [
+								"rift:drop_experience_from_forced_attack"
+							]
+						}
 					},
 					{
 					  	"filters": {

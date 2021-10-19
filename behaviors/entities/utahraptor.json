@@ -12,6 +12,7 @@
 				"contUtahUseSlash": "controller.animation.utah_forced_use_slash",
 				"contTameTag": "controller.animation.add_tame_tag",
 				"contBabyTag": "controller.animation.add_baby_tag",
+				"contRiddenTag": "controller.animation.add_ridden_tag",
 				"animForcedAttack": "animation.forced_attack_utahraptor"
 			},
 			"scripts": {
@@ -20,7 +21,8 @@
 					"contWildRemoveBuffs",
 					"contUtahUseSlash",
 					"contTameTag",
-					"contBabyTag"
+					"contBabyTag",
+					"contRiddenTag"
 				]
 			}
         },
@@ -252,7 +254,8 @@
             },
             "rift:utahraptor_adult_wild": {
                 "minecraft:health": {
-                    "value": 30
+                    "value": 30,
+                    "max": 30
                 },
                 "minecraft:behavior.random_stroll": {
 					"priority": 7
@@ -505,7 +508,7 @@
             "rift:utahraptor_adult_tamed": {
                 "minecraft:health": {
                     "value": 30,
-                    "max": 45
+                    "max": 30
                 },
 				"minecraft:healable": {
 					"force_use": true,
@@ -1010,20 +1013,10 @@
 							"filters": {
 								"all_of": [
 									{
-										"any_of": [
-											{
-												"test": "has_equipment",
-												"subject": "other",
-												"domain": "hand",
-												"value": "minecraft:potion:23"
-											},
-											{
-												"test": "has_equipment",
-												"subject": "other",
-												"domain": "hand",
-												"value": "minecraft:potion:24"
-											}
-										]
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "rift:euthanasia"
 									},
 									{
 										"test": "is_owner",
@@ -1051,8 +1044,7 @@
 							"event": "rift:commit_suicide",
 							"target": "self"
 						},
-						"use_item": true,
-						"transform_to_item": "minecraft:glass_bottle"
+						"use_item": true
 					}
 				]
             },
@@ -1542,60 +1534,6 @@
 								{
 									"test": "has_component",
 									"subject": "self",
-									"value": "minecraft:is_tamed"
-								},
-								{
-									"test": "has_component",
-									"subject": "self",
-									"value": "minecraft:is_saddled"
-								},
-								{
-									"test": "rider_count",
-									"subject": "self",
-									"operator": ">",
-									"value": 0
-								}
-							]
-						},
-						"event": "rift:activate_climbing",
-						"target": "self"
-					},
-					{
-						"filters": {
-							"any_of": [
-								{
-									"test": "on_ground",
-									"subject": "self",
-									"value": true
-								},
-								{
-									"test": "has_component",
-									"subject": "self",
-									"operator": "!=",
-									"value": "minecraft:is_saddled"
-								},
-								{
-									"test": "rider_count",
-									"subject": "self",
-									"operator": "==",
-									"value": 0
-								}
-							]
-						},
-						"event": "rift:deactivate_climbing",
-						"target": "self"
-					},
-					{
-						"filters": {
-							"all_of": [
-								{
-									"test": "on_ground",
-									"subject": "self",
-									"value": false
-								},
-								{
-									"test": "has_component",
-									"subject": "self",
 									"operator": "!=",
 									"value": "minecraft:is_tamed"
 								}
@@ -1940,6 +1878,11 @@
 						"rift:utahraptor_sittable",
 						"rift:pushable"
 					]
+				},
+				"run_command": {
+					"command": [
+						"tag @s add climber"
+					]
 				}
 			},
 			"rift:can_sit": {
@@ -1952,6 +1895,11 @@
 				"remove": {
 					"component_groups": [
 						"rift:pushable"
+					]
+				},
+				"run_command": {
+					"command": [
+						"tag @s remove climber"
 					]
 				}
 			},
@@ -2051,20 +1999,6 @@
 				"run_command": {
 					"command": [
 						"effect @s clear"
-					]
-				}
-			},
-			"rift:activate_climbing": {
-				"run_command": {
-					"command": [
-						"tag @s add climber"
-					]
-				}
-			},
-			"rift:deactivate_climbing": {
-				"run_command": {
-					"command": [
-						"tag @s remove climber"
 					]
 				}
 			},
@@ -2289,12 +2223,56 @@
 			},
 			"rift:on_force_attacked_death": {
 				"sequence": [
+					{},
 					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"operator": "!=",
+									"value": "sarcoSpinAttack"
+								},
+								{
+								  	"test": "has_component",
+								  	"subject": "self",
+								  	"operator": "!=",
+								  	"value": "minecraft:is_baby"
+								}
+							]
+						},
 						"add": {
 							"component_groups": [
-						  		"rift:drop_experience_from_forced_attack"
+								"rift:drop_experience_from_forced_attack"
 							]
-					  	}
+						}
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "sarcoSpinAttack"
+								},
+								{
+									"test": "has_component",
+									"subject": "other",
+									"value": "minecraft:is_tamed"
+								},
+								{
+								  	"test": "has_component",
+								  	"subject": "self",
+								  	"operator": "!=",
+								  	"value": "minecraft:is_baby"
+								}
+							]
+						},
+						"add": {
+							"component_groups": [
+								"rift:drop_experience_from_forced_attack"
+							]
+						}
 					},
 					{
 					  	"filters": {

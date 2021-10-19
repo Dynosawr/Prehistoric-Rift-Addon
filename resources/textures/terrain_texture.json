@@ -139,14 +139,94 @@
                 "textures/blocks/warped thatch block side 2"
             ]
         },
-        "furniture_bench": {
+        "plastic block": {
             "textures": [
-                "textures/blocks/furniture/furniture bench"
+                "textures/blocks/plastic block"
             ]
         },
-        "furniture_bench_has_blueprint": {
+        "black plastic block": {
             "textures": [
-                "textures/blocks/furniture/furniture bench has blueprint"
+                "textures/blocks/black plastic block"
+            ]
+        },
+        "blue plastic block": {
+            "textures": [
+                "textures/blocks/blue plastic block"
+            ]
+        },
+        "brown plastic block": {
+            "textures": [
+                "textures/blocks/brown plastic block"
+            ]
+        },
+        "cyan plastic block": {
+            "textures": [
+                "textures/blocks/cyan plastic block"
+            ]
+        },        
+        "gray plastic block": {
+            "textures": [
+                "textures/blocks/gray plastic block"
+            ]
+        },
+        "green plastic block": {
+            "textures": [
+                "textures/blocks/green plastic block"
+            ]
+        },
+        "light blue plastic block": {
+            "textures": [
+                "textures/blocks/light blue plastic block"
+            ]
+        },
+        "light gray plastic block": {
+            "textures": [
+                "textures/blocks/light gray plastic block"
+            ]
+        },
+        "lime plastic block": {
+            "textures": [
+                "textures/blocks/lime plastic block"
+            ]
+        },
+        "magenta plastic block": {
+            "textures": [
+                "textures/blocks/magenta plastic block"
+            ]
+        },
+        "orange plastic block": {
+            "textures": [
+                "textures/blocks/orange plastic block"
+            ]
+        },
+        "pink plastic block": {
+            "textures": [
+                "textures/blocks/pink plastic block"
+            ]
+        },        
+        "purple plastic block": {
+            "textures": [
+                "textures/blocks/purple plastic block"
+            ]
+        },
+        "red plastic block": {
+            "textures": [
+                "textures/blocks/red plastic block"
+            ]
+        },
+        "white plastic block": {
+            "textures": [
+                "textures/blocks/white plastic block"
+            ]
+        },
+        "yellow plastic block": {
+            "textures": [
+                "textures/blocks/yellow plastic block"
+            ]
+        },
+        "phantom_chair": {
+            "textures": [
+                "textures/blocks/furniture/chair/phantom chair"
             ]
         },
         "wooden_chair_oak": {
@@ -194,674 +274,214 @@
                 "textures/blocks/furniture/chair/plastic chair"
             ]
         },
+        "plastic_chair_black": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair black"
+            ]
+        },
+        "plastic_chair_blue": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair blue"
+            ]
+        },
+        "plastic_chair_brown": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair brown"
+            ]
+        },
+        "plastic_chair_cyan": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair cyan"
+            ]
+        },
+        "plastic_chair_gray": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair gray"
+            ]
+        },
+        "plastic_chair_green": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair green"
+            ]
+        },
+        "plastic_chair_light_blue": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair light blue"
+            ]
+        },
+        "plastic_chair_light_gray": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair light gray"
+            ]
+        },
+        "plastic_chair_lime": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair lime"
+            ]
+        },
+        "plastic_chair_magenta": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair magenta"
+            ]
+        },
+        "plastic_chair_orange": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair orange"
+            ]
+        },
+        "plastic_chair_pink": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair pink"
+            ]
+        },
+        "plastic_chair_purple": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair purple"
+            ]
+        },
+        "plastic_chair_red": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair red"
+            ]
+        },
+        "plastic_chair_white": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair white"
+            ]
+        },
+        "plastic_chair_yellow": {
+            "textures": [
+                "textures/blocks/furniture/chair/plastic chair yellow"
+            ]
+        },
+        "phantom_table": {
+            "textures": [
+                "textures/blocks/furniture/table/phantom table"
+            ]
+        },
         "wooden_table_oak": {
             "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak"
-            ]
-        },
-        "wooden_table_oak_corner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak corner 1"
-            ]
-        },
-        "wooden_table_oak_corner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak corner 2"
-            ]
-        },
-        "wooden_table_oak_corner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak corner 3"
-            ]
-        },
-        "wooden_table_oak_corner_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak corner 4"
-            ]
-        },
-        "wooden_table_oak_inner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak inner 1"
-            ]
-        },
-        "wooden_table_oak_inner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak inner 2"
-            ]
-        },
-        "wooden_table_oak_inner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak inner 3"
-            ]
-        },
-        "wooden_table_oak_side_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak side 1"
-            ]
-        },
-        "wooden_table_oak_side_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak side 2"
-            ]
-        },
-        "wooden_table_oak_side_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak side 3"
-            ]
-        },
-        "wooden_table_oak_side_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak side 4"
-            ]
-        },
-        "wooden_table_oak_side_5": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak side 5"
-            ]
-        },
-        "wooden_table_oak_side_6": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak side 6"
-            ]
-        },
-        "wooden_table_oak_side_7": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak side 7"
-            ]
-        },
-        "wooden_table_oak_side_8": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table oak/wooden table oak side 8"
+                "textures/blocks/furniture/table/wooden table oak"
             ]
         },
         "wooden_table_birch": {
             "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch"
-            ]
-        },
-        "wooden_table_birch_corner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch corner 1"
-            ]
-        },
-        "wooden_table_birch_corner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch corner 2"
-            ]
-        },
-        "wooden_table_birch_corner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch corner 3"
-            ]
-        },
-        "wooden_table_birch_corner_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch corner 4"
-            ]
-        },
-        "wooden_table_birch_inner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch inner 1"
-            ]
-        },
-        "wooden_table_birch_inner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch inner 2"
-            ]
-        },
-        "wooden_table_birch_inner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch inner 3"
-            ]
-        },
-        "wooden_table_birch_side_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch side 1"
-            ]
-        },
-        "wooden_table_birch_side_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch side 2"
-            ]
-        },
-        "wooden_table_birch_side_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch side 3"
-            ]
-        },
-        "wooden_table_birch_side_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch side 4"
-            ]
-        },
-        "wooden_table_birch_side_5": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch side 5"
-            ]
-        },
-        "wooden_table_birch_side_6": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch side 6"
-            ]
-        },
-        "wooden_table_birch_side_7": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch side 7"
-            ]
-        },
-        "wooden_table_birch_side_8": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table birch/wooden table birch side 8"
+                "textures/blocks/furniture/table/wooden table birch"
             ]
         },
         "wooden_table_spruce": {
             "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce"
-            ]
-        },
-        "wooden_table_spruce_corner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce corner 1"
-            ]
-        },
-        "wooden_table_spruce_corner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce corner 2"
-            ]
-        },
-        "wooden_table_spruce_corner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce corner 3"
-            ]
-        },
-        "wooden_table_spruce_corner_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce corner 4"
-            ]
-        },
-        "wooden_table_spruce_inner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce inner 1"
-            ]
-        },
-        "wooden_table_spruce_inner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce inner 2"
-            ]
-        },
-        "wooden_table_spruce_inner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce inner 3"
-            ]
-        },
-        "wooden_table_spruce_side_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce side 1"
-            ]
-        },
-        "wooden_table_spruce_side_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce side 2"
-            ]
-        },
-        "wooden_table_spruce_side_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce side 3"
-            ]
-        },
-        "wooden_table_spruce_side_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce side 4"
-            ]
-        },
-        "wooden_table_spruce_side_5": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce side 5"
-            ]
-        },
-        "wooden_table_spruce_side_6": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce side 6"
-            ]
-        },
-        "wooden_table_spruce_side_7": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce side 7"
-            ]
-        },
-        "wooden_table_spruce_side_8": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table spruce/wooden table spruce side 8"
+                "textures/blocks/furniture/table/wooden table spruce"
             ]
         },
         "wooden_table_jungle": {
             "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle"
-            ]
-        },
-        "wooden_table_jungle_corner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle corner 1"
-            ]
-        },
-        "wooden_table_jungle_corner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle corner 2"
-            ]
-        },
-        "wooden_table_jungle_corner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle corner 3"
-            ]
-        },
-        "wooden_table_jungle_corner_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle corner 4"
-            ]
-        },
-        "wooden_table_jungle_inner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle inner 1"
-            ]
-        },
-        "wooden_table_jungle_inner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle inner 2"
-            ]
-        },
-        "wooden_table_jungle_inner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle inner 3"
-            ]
-        },
-        "wooden_table_jungle_side_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle side 1"
-            ]
-        },
-        "wooden_table_jungle_side_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle side 2"
-            ]
-        },
-        "wooden_table_jungle_side_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle side 3"
-            ]
-        },
-        "wooden_table_jungle_side_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle side 4"
-            ]
-        },
-        "wooden_table_jungle_side_5": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle side 5"
-            ]
-        },
-        "wooden_table_jungle_side_6": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle side 6"
-            ]
-        },
-        "wooden_table_jungle_side_7": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle side 7"
-            ]
-        },
-        "wooden_table_jungle_side_8": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table jungle/wooden table jungle side 8"
+                "textures/blocks/furniture/table/wooden table jungle"
             ]
         },
         "wooden_table_acacia": {
             "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia"
-            ]
-        },
-        "wooden_table_acacia_corner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia corner 1"
-            ]
-        },
-        "wooden_table_acacia_corner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia corner 2"
-            ]
-        },
-        "wooden_table_acacia_corner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia corner 3"
-            ]
-        },
-        "wooden_table_acacia_corner_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia corner 4"
-            ]
-        },
-        "wooden_table_acacia_inner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia inner 1"
-            ]
-        },
-        "wooden_table_acacia_inner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia inner 2"
-            ]
-        },
-        "wooden_table_acacia_inner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia inner 3"
-            ]
-        },
-        "wooden_table_acacia_side_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia side 1"
-            ]
-        },
-        "wooden_table_acacia_side_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia side 2"
-            ]
-        },
-        "wooden_table_acacia_side_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia side 3"
-            ]
-        },
-        "wooden_table_acacia_side_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia side 4"
-            ]
-        },
-        "wooden_table_acacia_side_5": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia side 5"
-            ]
-        },
-        "wooden_table_acacia_side_6": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia side 6"
-            ]
-        },
-        "wooden_table_acacia_side_7": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia side 7"
-            ]
-        },
-        "wooden_table_acacia_side_8": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table acacia/wooden table acacia side 8"
+                "textures/blocks/furniture/table/wooden table acacia"
             ]
         },
         "wooden_table_dark_oak": {
             "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak"
-            ]
-        },
-        "wooden_table_dark_oak_corner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak corner 1"
-            ]
-        },
-        "wooden_table_dark_oak_corner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak corner 2"
-            ]
-        },
-        "wooden_table_dark_oak_corner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak corner 3"
-            ]
-        },
-        "wooden_table_dark_oak_corner_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak corner 4"
-            ]
-        },
-        "wooden_table_dark_oak_inner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak inner 1"
-            ]
-        },
-        "wooden_table_dark_oak_inner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak inner 2"
-            ]
-        },
-        "wooden_table_dark_oak_inner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak inner 3"
-            ]
-        },
-        "wooden_table_dark_oak_side_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak side 1"
-            ]
-        },
-        "wooden_table_dark_oak_side_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak side 2"
-            ]
-        },
-        "wooden_table_dark_oak_side_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak side 3"
-            ]
-        },
-        "wooden_table_dark_oak_side_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak side 4"
-            ]
-        },
-        "wooden_table_dark_oak_side_5": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak side 5"
-            ]
-        },
-        "wooden_table_dark_oak_side_6": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak side 6"
-            ]
-        },
-        "wooden_table_dark_oak_side_7": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak side 7"
-            ]
-        },
-        "wooden_table_dark_oak_side_8": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table dark oak/wooden table dark oak side 8"
+                "textures/blocks/furniture/table/wooden table dark oak"
             ]
         },
         "wooden_table_crimson": {
             "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson"
-            ]
-        },
-        "wooden_table_crimson_corner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson corner 1"
-            ]
-        },
-        "wooden_table_crimson_corner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson corner 2"
-            ]
-        },
-        "wooden_table_crimson_corner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson corner 3"
-            ]
-        },
-        "wooden_table_crimson_corner_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson corner 4"
-            ]
-        },
-        "wooden_table_crimson_inner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson inner 1"
-            ]
-        },
-        "wooden_table_crimson_inner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson inner 2"
-            ]
-        },
-        "wooden_table_crimson_inner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson inner 3"
-            ]
-        },
-        "wooden_table_crimson_side_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson side 1"
-            ]
-        },
-        "wooden_table_crimson_side_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson side 2"
-            ]
-        },
-        "wooden_table_crimson_side_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson side 3"
-            ]
-        },
-        "wooden_table_crimson_side_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson side 4"
-            ]
-        },
-        "wooden_table_crimson_side_5": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson side 5"
-            ]
-        },
-        "wooden_table_crimson_side_6": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson side 6"
-            ]
-        },
-        "wooden_table_crimson_side_7": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson side 7"
-            ]
-        },
-        "wooden_table_crimson_side_8": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table crimson/wooden table crimson side 8"
+                "textures/blocks/furniture/table/wooden table crimson"
             ]
         },
         "wooden_table_warped": {
             "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped"
-            ]
-        },
-        "wooden_table_warped_corner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped corner 1"
-            ]
-        },
-        "wooden_table_warped_corner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped corner 2"
-            ]
-        },
-        "wooden_table_warped_corner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped corner 3"
-            ]
-        },
-        "wooden_table_warped_corner_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped corner 4"
-            ]
-        },
-        "wooden_table_warped_inner_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped inner 1"
-            ]
-        },
-        "wooden_table_warped_inner_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped inner 2"
-            ]
-        },
-        "wooden_table_warped_inner_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped inner 3"
-            ]
-        },
-        "wooden_table_warped_side_1": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped side 1"
-            ]
-        },
-        "wooden_table_warped_side_2": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped side 2"
-            ]
-        },
-        "wooden_table_warped_side_3": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped side 3"
-            ]
-        },
-        "wooden_table_warped_side_4": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped side 4"
-            ]
-        },
-        "wooden_table_warped_side_5": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped side 5"
-            ]
-        },
-        "wooden_table_warped_side_6": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped side 6"
-            ]
-        },
-        "wooden_table_warped_side_7": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped side 7"
-            ]
-        },
-        "wooden_table_warped_side_8": {
-            "textures": [
-                "textures/blocks/furniture/table/wooden table warped/wooden table warped side 8"
+                "textures/blocks/furniture/table/wooden table warped"
             ]
         },
         "plastic_table": {
             "textures": [
-                "textures/blocks/furniture/table/plastic table/plastic table"
+                "textures/blocks/furniture/table/plastic table"
             ]
         },
-        "plastic_table_corner": {
+        "plastic_table_black": {
             "textures": [
-                "textures/blocks/furniture/table/plastic table/plastic table corner"
+                "textures/blocks/furniture/table/plastic table black"
             ]
         },
-        "plastic_table_inner_1": {
+        "plastic_table_blue": {
             "textures": [
-                "textures/blocks/furniture/table/plastic table/plastic table inner 1"
+                "textures/blocks/furniture/table/plastic table blue"
             ]
         },
-        "plastic_table_inner_2": {
+        "plastic_table_brown": {
             "textures": [
-                "textures/blocks/furniture/table/plastic table/plastic table inner 2"
+                "textures/blocks/furniture/table/plastic table brown"
             ]
         },
-        "plastic_table_side_1": {
+        "plastic_table_cyan": {
             "textures": [
-                "textures/blocks/furniture/table/plastic table/plastic table side 1"
+                "textures/blocks/furniture/table/plastic table cyan"
             ]
         },
-        "plastic_table_side_2": {
+        "plastic_table_gray": {
             "textures": [
-                "textures/blocks/furniture/table/plastic table/plastic table side 2"
+                "textures/blocks/furniture/table/plastic table gray"
+            ]
+        },
+        "plastic_table_green": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table green"
+            ]
+        },
+        "plastic_table_light_blue": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table light blue"
+            ]
+        },
+        "plastic_table_light_gray": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table light gray"
+            ]
+        },
+        "plastic_table_lime": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table lime"
+            ]
+        },
+        "plastic_table_magenta": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table magenta"
+            ]
+        },
+        "plastic_table_orange": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table orange"
+            ]
+        },
+        "plastic_table_pink": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table pink"
+            ]
+        },
+        "plastic_table_purple": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table purple"
+            ]
+        },
+        "plastic_table_red": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table red"
+            ]
+        },
+        "plastic_table_white": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table white"
+            ]
+        },
+        "plastic_table_yellow": {
+            "textures": [
+                "textures/blocks/furniture/table/plastic table yellow"
             ]
         }
     }

@@ -10,13 +10,15 @@
 				"contParasaurUseAttack": "controller.animation.parasaur_forced_use_attack",
 				"contTameTag": "controller.animation.add_tame_tag",
 				"contBabyTag": "controller.animation.add_baby_tag",
+				"contRiddenTag": "controller.animation.add_ridden_tag",
 				"animForcedAttack": "animation.forced_attack_parasaurolophus"
 			},
 			"scripts": {
 				"animate": [
 					"contParasaurUseAttack",
 					"contTameTag",
-					"contBabyTag"
+					"contBabyTag",
+					"contRiddenTag"
 				]
 			}
         },
@@ -84,7 +86,7 @@
             },
             "rift:parasaurolophus_baby_wild": {
 				"minecraft:health": {
-					"value": 30
+					"value": 20
 				},
 				"minecraft:behavior.follow_parent": {
 					"priority": 5
@@ -170,7 +172,7 @@
             },
             "rift:parasaurolophus_baby_tamed": {
                 "minecraft:health": {
-					"value": 30,
+					"value": 20,
 					"max": 40
 				}
             },
@@ -206,7 +208,8 @@
             },
             "rift:parasaurolophus_adult_wild": {
 				"minecraft:health": {
-					"value": 60
+					"value": 60,
+					"max": 60
 				},
 				"minecraft:tameable": {
 					"probability": 0.25,
@@ -373,7 +376,7 @@
             "rift:parasaurolophus_adult_tamed": {
 				"minecraft:health": {
 					"value": 60,
-					"max": 75
+					"max": 60
 				},
 				"minecraft:healable": {
 					"force_use": true,
@@ -958,20 +961,10 @@
 							"filters": {
 								"all_of": [
 									{
-										"any_of": [
-											{
-												"test": "has_equipment",
-												"subject": "other",
-												"domain": "hand",
-												"value": "minecraft:potion:23"
-											},
-											{
-												"test": "has_equipment",
-												"subject": "other",
-												"domain": "hand",
-												"value": "minecraft:potion:24"
-											}
-										]
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "rift:euthanasia"
 									},
 									{
 										"test": "is_owner",
@@ -999,8 +992,7 @@
 							"event": "rift:commit_suicide",
 							"target": "self"
 						},
-						"use_item": true,
-						"transform_to_item": "minecraft:glass_bottle"
+						"use_item": true
 					}
 				]
 			},
@@ -2203,12 +2195,56 @@
 			},
 			"rift:on_force_attacked_death": {
 				"sequence": [
+					{},
 					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"operator": "!=",
+									"value": "sarcoSpinAttack"
+								},
+								{
+								  	"test": "has_component",
+								  	"subject": "self",
+								  	"operator": "!=",
+								  	"value": "minecraft:is_baby"
+								}
+							]
+						},
 						"add": {
 							"component_groups": [
-						  		"rift:drop_experience_from_forced_attack"
+								"rift:drop_experience_from_forced_attack"
 							]
-					  	}
+						}
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "sarcoSpinAttack"
+								},
+								{
+									"test": "has_component",
+									"subject": "other",
+									"value": "minecraft:is_tamed"
+								},
+								{
+								  	"test": "has_component",
+								  	"subject": "self",
+								  	"operator": "!=",
+								  	"value": "minecraft:is_baby"
+								}
+							]
+						},
+						"add": {
+							"component_groups": [
+								"rift:drop_experience_from_forced_attack"
+							]
+						}
 					},
 					{
 					  	"filters": {

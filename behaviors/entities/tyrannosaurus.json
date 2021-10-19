@@ -7,10 +7,10 @@
 			"is_spawnable": true,
 			"is_experimental": false,
 			"animations": {
-				"contRoarBreak": "controller.animation.wild_tyranno_break_blocks",
 				"contTyrannoUseBite": "controller.animation.tyranno_forced_use_bite",
 				"contTameTag": "controller.animation.add_tame_tag",
 				"contBabyTag": "controller.animation.add_baby_tag",
+				"contRiddenTag": "controller.animation.add_ridden_tag",
 				"contTyrannoEndRoarCooldown": "controller.animation.tyranno_end_roar_cooldown",
 				"contIntimidate": "controller.animation.tyranno_intimidate",
 				"animForcedAttack": "animation.forced_attack_tyrannosaurus",
@@ -20,10 +20,10 @@
 			},
 			"scripts": {
 				"animate": [
-					"contRoarBreak",
 					"contTyrannoUseBite",
 					"contTameTag",
 					"contBabyTag",
+					"contRiddenTag",
 					"contTyrannoEndRoarCooldown",
 					"contIntimidate"
 				]
@@ -226,7 +226,8 @@
 			},
 			"rift:tyrannosaurus_adult_wild": {
 				"minecraft:health": {
-					"value": 160
+					"value": 160,
+					"max": 160
 				},
 				"minecraft:behavior.random_stroll": {
 					"priority": 6
@@ -249,7 +250,7 @@
 			"rift:tyrannosaurus_adult_tamed": {
 				"minecraft:health": {
 					"value": 160,
-					"max": 175
+					"max": 160
 				},
 				"minecraft:healable": {
 					"force_use": true,
@@ -559,7 +560,7 @@
 			},
 			"rift:roar_in_wild": {
 				"minecraft:timer": {
-					"time": 1.5,
+					"time": 2.08,
 					"time_down_event": {
 						"event": "rift:stop_wild_roaring",
 						"target": "self"
@@ -642,10 +643,7 @@
 			},
 			"rift:roaring": {
 				"minecraft:timer": {
-					"time": [
-						1.5,
-						1.5
-					],
+					"time": 2.08,
 					"time_down_event": {
 						"event": "rift:start_roaring_cooldown",
 						"target": "self"
@@ -836,20 +834,10 @@
 							"filters": {
 								"all_of": [
 									{
-										"any_of": [
-											{
-												"test": "has_equipment",
-												"subject": "other",
-												"domain": "hand",
-												"value": "minecraft:potion:23"
-											},
-											{
-												"test": "has_equipment",
-												"subject": "other",
-												"domain": "hand",
-												"value": "minecraft:potion:24"
-											}
-										]
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "rift:euthanasia"
 									},
 									{
 										"test": "is_owner",
@@ -877,8 +865,7 @@
 							"event": "rift:commit_suicide",
 							"target": "self"
 						},
-						"use_item": true,
-						"transform_to_item": "minecraft:glass_bottle"
+						"use_item": true
 					}
 				]
 			},
@@ -926,6 +913,12 @@
 										"test": "random_chance",
 										"value": 3,
 										"subject": "self"
+									},
+									{
+										"test": "has_damage",
+										"subject": "self",
+										"operator": "!=",
+										"value": "fatal"
 									},
 									{
 										"test": "has_component",
@@ -1725,12 +1718,56 @@
 			},
 			"rift:on_force_attacked_death": {
 				"sequence": [
+					{},
 					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"operator": "!=",
+									"value": "sarcoSpinAttack"
+								},
+								{
+								  	"test": "has_component",
+								  	"subject": "self",
+								  	"operator": "!=",
+								  	"value": "minecraft:is_baby"
+								}
+							]
+						},
 						"add": {
 							"component_groups": [
-						  		"rift:drop_experience_from_forced_attack"
+								"rift:drop_experience_from_forced_attack"
 							]
-					  	}
+						}
+					},
+					{
+						"filters": {
+							"all_of": [
+								{
+									"test": "is_family",
+									"subject": "other",
+									"value": "sarcoSpinAttack"
+								},
+								{
+									"test": "has_component",
+									"subject": "other",
+									"value": "minecraft:is_tamed"
+								},
+								{
+								  	"test": "has_component",
+								  	"subject": "self",
+								  	"operator": "!=",
+								  	"value": "minecraft:is_baby"
+								}
+							]
+						},
+						"add": {
+							"component_groups": [
+								"rift:drop_experience_from_forced_attack"
+							]
+						}
 					},
 					{
 					  	"filters": {

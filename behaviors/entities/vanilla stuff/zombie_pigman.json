@@ -672,16 +672,32 @@
       },
 
       "rift:on_force_attacked": {
-        "add": {
-          "component_groups": [
-            "rift:attack_forced_attack_entity"
-          ]
-        },
-        "remove": {
-          "component_groups": [
-            "rift:default_targets"
-          ]
-        }
+        "sequence": [
+          {
+            "add": {
+              "component_groups": [
+                "rift:attack_forced_attack_entity"
+              ]
+            },
+            "remove": {
+              "component_groups": [
+                "rift:default_targets"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "anomalocarisForcedAttack"
+            },
+            "run_command": {
+              "command": [
+                "effect @e[type=rift:anomalocaris, tag=tamed, tag=ridden, c=1] instant_health 5 0"
+              ]
+            }
+          }
+        ]
       },
       "rift:no_force_attacked": {
         "add": {
@@ -713,44 +729,41 @@
       "rift:on_force_attacked_death_adult": {
         "sequence": [
           {
-            "add": {
-              "component_groups": [
-                "rift:adult_drop_experience_from_forced_attack"
-              ]
-            }
+
           },
           {
-            "filters": {
-              "all_of": [
-                {
+              "filters": {
                   "test": "is_family",
                   "subject": "other",
-                  "value": "tyrannosaurusForcedAttack"
-                },
-                {
-                  "test": "has_component",
-                  "subject": "self",
                   "operator": "!=",
-                  "value": "minecraft:is_baby"
-                }
-              ]
-            },
-            "add": {
-              "component_groups": [
-                "rift:drop_more_meat_from_tyrannosaurus"
-              ]
-            }
-          }
-        ]
-      },
-      "rift:on_force_attacked_death_baby": {
-        "sequence": [
+                  "value": "sarcoSpinAttack"
+              },
+              "add": {
+                  "component_groups": [
+                      "rift:adult_drop_experience_from_forced_attack"
+                  ]
+              }
+          },
           {
-            "add": {
-              "component_groups": [
-                "rift:baby_drop_experience_from_forced_attack"
-              ]
-            }
+              "filters": {
+                  "all_of": [
+                      {
+                          "test": "is_family",
+                          "subject": "other",
+                          "value": "sarcoSpinAttack"
+                      },
+                      {
+                          "test": "has_component",
+                          "subject": "other",
+                          "value": "minecraft:is_tamed"
+                      }
+                  ]
+              },
+              "add": {
+                  "component_groups": [
+                      "rift:adult_drop_experience_from_forced_attack"
+                  ]
+              }
           },
           {
             "filters": {
@@ -761,6 +774,83 @@
             "add": {
               "component_groups": [
                 "rift:drop_more_meat_from_tyrannosaurus"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "anomalocarisForcedAttack"
+            },
+            "run_command": {
+              "command": [
+                "effect @e[type=rift:anomalocaris, tag=tamed, tag=ridden, c=1] instant_health 5 2"
+              ]
+            }
+          }
+        ]
+      },
+      "rift:on_force_attacked_death_baby": {
+        "sequence": [
+          {
+
+          },
+          {
+              "filters": {
+                  "test": "is_family",
+                  "subject": "other",
+                  "operator": "!=",
+                  "value": "sarcoSpinAttack"
+              },
+              "add": {
+                  "component_groups": [
+                      "rift:baby_drop_experience_from_forced_attack"
+                  ]
+              }
+          },
+          {
+              "filters": {
+                  "all_of": [
+                      {
+                          "test": "is_family",
+                          "subject": "other",
+                          "value": "sarcoSpinAttack"
+                      },
+                      {
+                          "test": "has_component",
+                          "subject": "other",
+                          "value": "minecraft:is_tamed"
+                      }
+                  ]
+              },
+              "add": {
+                  "component_groups": [
+                      "rift:baby_drop_experience_from_forced_attack"
+                  ]
+              }
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "tyrannosaurusForcedAttack"
+            },
+            "add": {
+              "component_groups": [
+                "rift:drop_more_meat_from_tyrannosaurus"
+              ]
+            }
+          },
+          {
+            "filters": {
+              "test": "is_family",
+              "subject": "other",
+              "value": "anomalocarisForcedAttack"
+            },
+            "run_command": {
+              "command": [
+                "effect @e[type=rift:anomalocaris, tag=tamed, tag=ridden, c=1] instant_health 5 0"
               ]
             }
           }
